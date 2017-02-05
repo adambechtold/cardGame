@@ -41,3 +41,4 @@ ostream &operator<<(ostream& ostr, const Card &c)
     ostr << " " << c.getValue() << " of " << c.getSuite();
     return ostr;
 }
+//can you see this?
