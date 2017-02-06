@@ -3,6 +3,7 @@
 //
 
 #include "Card.h"
+#include <iostream>
 
 Card::Card(int value, string suite)
 // constructor for a card
@@ -41,4 +42,3 @@ ostream& operator<< (ostream& ostr, const Card& c)
     ostr << " " << c.value << " of " << c.suite;
     return ostr;
 }
-//can you see this?
