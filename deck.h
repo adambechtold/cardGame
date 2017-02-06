@@ -17,6 +17,7 @@ public:
 private:
     node<Card> *front;
     string suits[4];
+    int size;
 
 };
 
