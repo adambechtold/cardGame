@@ -8,18 +8,18 @@
 Deck::Deck() {
     this->suits = ("Club", "Diamonds", "Hearts", "Spades");
     this->size = 52;
-    front = NULL;
+
+    node<Card> *curr = this->front;
+
     // loop through an assign values
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 13; j++)
         {
-            Card temp = Card(j, suits[i]);
-
-            p1 = new node <Card> (j, suits);
-            if (i == 0 && j == 0)
-                front = p1;
-            p1=p1->next;
+            curr->nodeValue = Card(i, suits[j]);
+            node *temp;
+            curr->next = temp;
+            delete temp;
         }
     }
 }
@@ -27,7 +27,7 @@ Deck::Deck() {
 void Deck::shuffle()
 //shuffle that shit
 {
-    node<Card> *front = this->front;
+    node<Card> *tempFront = this->front;
     node<Card> *curr = front;
     int size = this->size;
 
@@ -49,7 +49,7 @@ void Deck::shuffle()
         size--;
     }
 
-    delete front;
+    delete tempFront;
     delete curr;
 }
 ostream &operator<<(ostream &ostr, const Deck &d)
