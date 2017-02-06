@@ -7,6 +7,8 @@
 using namespace std;
 #include <iostream>
 #include <string>
+#include "Card.h"
+#include "d_node.h"
 class Deck
 {
 public:
@@ -15,8 +17,10 @@ public:
     Deck();
 
 private:
+    //node<Card> *p1;
     node<Card> *front;
     string suits[4];
+    int size;
 
 };
 
