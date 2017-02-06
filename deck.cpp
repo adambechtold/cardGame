@@ -6,9 +6,10 @@
 #include "Card.h"
 
 Deck::Deck() {
-        this->suits = ("Club", "Diamonds", "Hearts", "Spades");
+    this->suits = ("Club", "Diamonds", "Hearts", "Spades");
+    this->size = 52;
     front = NULL;
-        // loop through an assign values
+    // loop through an assign values
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 13; j++)
@@ -21,12 +22,35 @@ Deck::Deck() {
             p1=p1->next;
         }
     }
-    }
+}
 
 void Deck::shuffle()
+//shuffle that shit
 {
-    //shuffle some shit
+    node<Card> *front = this->front;
+    node<Card> *curr = front;
+    int size = this->size;
 
+    while(size > 0) {
+        int i = rand() % size;
+
+        while(i > 0){
+            curr = curr->next;
+            i--;
+        }
+
+        Card temp = curr->nodeValue;
+        front->nodeValue = curr->nodeValue;
+        curr->nodeValue = temp;
+
+        front = front->next;
+        curr = front;
+
+        size--;
+    }
+
+    delete front;
+    delete curr;
 }
 ostream &operator<<(ostream &ostr, const Deck &d)
 {
