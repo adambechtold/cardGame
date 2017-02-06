@@ -2,7 +2,6 @@
 // Created by Adam Bechtold on 2/5/17.
 //
 
-#include <stdio.h>
 #include <iostream>
 #include <string>
 
