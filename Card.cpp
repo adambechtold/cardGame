@@ -39,6 +39,6 @@ string Card::getSuite() const
 ostream& operator<< (ostream& ostr, const Card& c)
 // overload << operator to print fields of the card
 {
-    ostr << " " << c.value << " of " << c.suite;
+    ostr << " " << c.getValue() << " of " << c.getSuite();
     return ostr;
 }
