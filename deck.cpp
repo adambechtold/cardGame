@@ -13,7 +13,9 @@ Deck::Deck() {
     // loop through an assign values
 }
 
-void Deck::shuffle() {
+void Deck::shuffle()
+//shuffle that shit
+{
     node<Card> *front = this->front;
     node<Card> *curr = front;
     int size = this->size;
