@@ -41,4 +41,4 @@ ostream& operator<< (ostream& ostr, const Card& c)
 {
     ostr << " " << c.getValue() << " of " << c.getSuit();
     return ostr;
-} //test
+} //test hi Pat
