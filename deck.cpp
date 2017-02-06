@@ -32,19 +32,27 @@ void Deck::shuffle()
     int size = this->size;
 
     while(size > 0) {
-        int i = rand() % size;
 
+        //move the current node object a random amount deep
+        int i = rand() % size;
         while(i > 0){
             curr = curr->next;
             i--;
         }
 
-        Card temp = curr->nodeValue;
+        //move
+
+        node<Card> *temp = this->front;
+        temp->next = front->next;
+
+        frontTemp->next =
+
+        Card *temp = curr->nodeValue;
         front->nodeValue = curr->nodeValue;
         curr->nodeValue = temp;
 
-        front = front->next;
-        curr = front;
+        frontTemp = frontTemp->next;
+        curr = frontTemp;
 
         size--;
     }
