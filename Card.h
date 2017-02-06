@@ -11,11 +11,10 @@ using namespace std;
 
 // to represent playing cards
 class Card {
-private:
+public:
     int value;
     string suite;
 
-public:
     Card(int value, string suite);
 
     void setValue(int value);

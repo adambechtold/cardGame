@@ -35,10 +35,10 @@ string Card::getSuite() const
     return this->suite;
 }
 
-ostream &operator<<(ostream& ostr, const Card &c)
+ostream& operator<< (ostream& ostr, const Card& c)
 // overload << operator to print fields of the card
 {
-    ostr << " " << c.getValue() << " of " << c.getSuite();
+    ostr << " " << c.value << " of " << c.suite;
     return ostr;
 }
 //can you see this?
