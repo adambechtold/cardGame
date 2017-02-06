@@ -13,17 +13,17 @@ using namespace std;
 class Card {
 public:
     int value;
-    string suite;
+    string suit;
 
-    Card(int value, string suite);
+    Card(int value, string suit);
 
     void setValue(int value);
 
-    void setSuite(string suite);
+    void setSuit(string suit);
 
     int getValue() const;
 
-    string getSuite()const;
+    string getSuit()const;
 
     friend ostream& operator<< (ostream& ostr, const Card& c);
 };

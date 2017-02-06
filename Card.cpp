@@ -5,11 +5,11 @@
 #include "Card.h"
 #include <iostream>
 
-Card::Card(int value, string suite)
+Card::Card(int value, string suit)
 // constructor for a card
 {
     this->value = value;
-    this->suite = suite;
+    this->suit = suit;
 }
 
 void Card::setValue(int value)
@@ -18,10 +18,10 @@ void Card::setValue(int value)
     this->value = value;
 }
 
-void Card::setSuite(string suite)
-// set the suite of the playing card
+void Card::setSuit(string suit)
+// set the suit of the playing card
 {
-    this->suite = suite;
+    this->suit = suit;
 }
 
 int Card::getValue() const
@@ -30,15 +30,15 @@ int Card::getValue() const
     return this->value;
 }
 
-string Card::getSuite() const
-// return the suite of this playing card
+string Card::getSuit() const
+// return the suit of this playing card
 {
-    return this->suite;
+    return this->suit;
 }
 
 ostream& operator<< (ostream& ostr, const Card& c)
 // overload << operator to print fields of the card
 {
-    ostr << " " << c.getValue() << " of " << c.getSuite();
+    ostr << " " << c.getValue() << " of " << c.getSuit();
     return ostr;
 }
