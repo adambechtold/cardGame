@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Card.h"
+#include "deck.h"
 
 using namespace std;
 
@@ -9,7 +10,11 @@ int main() {
 
     Card c = Card(3, "Hearts");
 
+    Deck d = Deck();
+
     cout << c;
+
+    cout << d;
 
     return 0;
 }
