@@ -6,31 +6,10 @@
 #include "deck.h"
 #include "Card.h"
 
-//Deck::Deck() {
-//    this->size = 52;
-//    this->suits;
-//    string suitsOne[] = {"Club", "Diamonds", "Hearts", "Spades"};
-//
-//
-//    node<Card> *curr = new node<Card>(Card(1, suitsOne[0]));
-//    this->front = curr;
-//
-//    node<Card> *t;
-//    // loop through an assign values
-//    for (int i = 0; i < 4; i++)
-//    {
-//        for (int j = 0; j < 13; j++)
-//        {
-//            t = curr;
-//            curr = new node<Card>(Card(j, suitsOne[i]));
-//            t->next = curr;
-//        }
-//    }
-//
-//    cout << "deck complete";
-//}
 
-Deck::Deck() {
+Deck::Deck()
+//constructor for a deck of cards
+{
     this->size = 52;
     this->suits;
     string suitsOne[] = {"Clubs", "Diamonds", "Hearts", "Spades"};
