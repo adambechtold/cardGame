@@ -12,7 +12,7 @@ int main() {
 
     Deck d = Deck();
 
-    cout << c;
+   // cout << c;
 
     cout << d;
 
