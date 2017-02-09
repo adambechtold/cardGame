@@ -16,5 +16,10 @@ int main() {
 
     cout << d;
 
+    cout << "----shuffle time------" << endl;
+    d.shuffle();
+
+    cout << d;
+
     return 0;
 }
