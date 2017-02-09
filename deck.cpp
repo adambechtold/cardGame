@@ -10,13 +10,13 @@
 Deck::Deck()
 //constructor for a deck of cards
 {
-    this->size = 6;
+    this->size = 9;
     this->suits;
     string suitsOne[] = {"Clubs", "Diamonds", "Hearts", "Spades"};
 
     this->front = NULL;
 
-    for(int i = 1; i >= 0; i--) {
+    for(int i = 2; i >= 0; i--) {
         for(int j = 2; j >= 0; j--) {
             this->front = new node<Card> (Card(j+1, suitsOne[i]), this->front);
         }
@@ -53,7 +53,7 @@ void Deck::shuffle()
         int depth = i;
         while(i > 0){
             targetSwap = targetSwap->next;
-            if (size < this->size) {
+            if (size < this->size || i != depth) {
                 preTarget = preTarget->next;
             }
 
