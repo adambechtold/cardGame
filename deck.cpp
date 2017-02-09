@@ -4,34 +4,32 @@
 
 #include "d_node.h"
 #include "deck.h"
-#include "Card.h"
 
 
 Deck::Deck()
 //constructor for a deck of cards
 {
-    this->size = 9;
+    this->size = 52;
     this->suits;
     string suitsOne[] = {"Clubs", "Diamonds", "Hearts", "Spades"};
 
     this->front = NULL;
 
-    for(int i = 2; i >= 0; i--) {
-        for(int j = 2; j >= 0; j--) {
+    for(int i = 3; i >= 0; i--) {
+        for(int j = 13; j >= 0; j--) {
             this->front = new node<Card> (Card(j+1, suitsOne[i]), this->front);
         }
     }
 }
 
 void Deck::shuffle()
-//shuffle that shit
+//shuffle that shit Fisher-Yates style
 {
     int size = this->size;
+    int sCount = 0;
 
-    node<Card> *preFront = this->front;
-    node<Card> *frontSwap = this->front;  //
-    node<Card> *preTarget = this->front;  //points to target (i.e. item in list to be swapped)
-    node<Card> *targetSwap = this->front; //location of target node
+    node<Card> *rollingFront = this->front;
+    node<Card> *targetNode = this->front;
 
     while(size > 1) {
 
@@ -41,70 +39,39 @@ void Deck::shuffle()
 
         //if depth is zero, element at this node stays the same
         if(i == 0) {
-            preFront = preFront->next;
-            frontSwap = frontSwap->next;
-            preTarget = preTarget->next;
-            targetSwap = targetSwap->next;
+           // cout << "just advance" << endl;
+            rollingFront = rollingFront->next;
+            targetNode = rollingFront;
             size--;
+            sCount++;
             continue;
         }
 
         // else move into array
         int depth = i;
         while(i > 0){
-            targetSwap = targetSwap->next;
-            if (size < this->size || i != depth) {
-                preTarget = preTarget->next;
-            }
-
+            targetNode = targetNode->next;
             i--;
         }
 
-        //treat first element differently to avoid losing the front of this list
-        if (frontSwap == this->front && targetSwap == frontSwap->next) {
-            //swap em
-            this->front = targetSwap;
-            frontSwap->next = targetSwap->next;
-            targetSwap->next = frontSwap;
-        }
-        else if (frontSwap == this->front && targetSwap != frontSwap->next) {
-            //swap pointers around
-            this->front = targetSwap;
-            node<Card> *temp = targetSwap->next;
-            targetSwap->next = frontSwap->next;
+        cout << "s: " << size << " d: " << depth;
+        cout << " : switching " << rollingFront->nodeValue << " w/ ";
+        cout << targetNode->nodeValue << endl;
 
-            preTarget->next = frontSwap;
-            frontSwap->next = temp;
+        Card temp = targetNode->nodeValue;
+        targetNode->nodeValue = rollingFront->nodeValue;
+        rollingFront->nodeValue = temp;
 
-            delete temp; //TODO not sure if this is necessary
-        }
-        else if (preTarget == frontSwap) {
-            //swap pointers around
-            frontSwap->next = targetSwap->next;
-            targetSwap->next = frontSwap;
-            preFront->next = targetSwap;
-        }
-        else { //(preTarget != frontSwap)
-            //swap em
-            preTarget->next = frontSwap;
-            preFront->next = targetSwap;
-            node<Card> *temp = targetSwap->next;
-            targetSwap->next = frontSwap->next;
-            frontSwap->next = temp;
-
-            delete temp; //TODO not sure if this is necessary see above
-        }
-
-        //reset pointers and advance
-        preFront = targetSwap;
-        preTarget = targetSwap;
-        targetSwap = targetSwap->next;
-        frontSwap = targetSwap;
-
-        //decrease size by one
+        //advance pointers
+        rollingFront = rollingFront->next;
+        targetNode = rollingFront;
         size--;
+        sCount++;
     }
+
+    cout << endl << "sCout: " << sCount << endl;
 }
+
 ostream &operator<<(ostream &ostr, const Deck &d)
 {
     node<Card> *curr;
