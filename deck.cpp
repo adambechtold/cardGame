@@ -26,17 +26,58 @@ Deck::Deck()
 void Deck::shuffle()
 //shuffle that shit
 {
-    node<Card> *tempFront = this->front;
-    node<Card> *curr = front;
     int size = this->size;
+
+    node<Card> *preFront = this->front;
+    node<Card> *frontSwap = this->front;  //
+    node<Card> *preTarget = this->front;  //points to target (i.e. item in list to be swapped)
+    node<Card> *targetSwap = this->front; //location of target node
 
     while(size > 0) {
 
-        //move the current node object a random amount deep
-        int i = rand() % size;
+        //move to the target node
+        //ensure that the preTarget pointer is staying one spot behind target
+        int i = rand() % size; //select depth of target node
+
+        //if depth is zero, element at this node stays the same
+        if(i == 0) {
+            size--;
+            preFront = preFront->next;
+            frontSwap = frontSwap->next;
+            preTarget = preTarget->next;
+            targetSwap = targetSwap->next;
+            continue;
+        }
+
+        // else move into array
+        int depth = i;
         while(i > 0){
-            curr = curr->next;
+            targetSwap = targetSwap->next;
+            if (i != depth)
+                preTarget = preTarget->next;
             i--;
+        }
+
+        //treat first element differently to avoid losing the front of this list
+        if (frontSwap == this->front) {
+            //swap pointers around
+            this->front = targetSwap;
+            node<Card> *temp = targetSwap->next;
+            targetSwap->next = this->front->next;
+
+            preTarget->next = frontSwap;
+            frontSwap->next = temp;
+
+            delete temp; //TODO not sure if this is necessary
+
+            //reset pointers and advance
+            frontSwap = this->front->next;
+            preTarget = this->front;
+            targetSwap = this->front->next;
+            //preFront is set to front
+        }
+        else {
+
         }
 
 
