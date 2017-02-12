@@ -1,6 +1,11 @@
+// Project 2a
+// Adam Bechtold & Patrick Buzza
 //
-// Created by Adam Bechtold and Patrick Buzza on 2/6/17.
-//
+// cpp file for the Deck class
+// Implements the functions declared in the Deck header file including:
+//   - a Constructor
+//   - shuffle
+//   - overloaded << operator
 
 #include "d_node.h"
 #include "deck.h"
