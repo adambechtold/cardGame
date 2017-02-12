@@ -1,6 +1,11 @@
+// Project 2a
+// Adam Bechtold & Patrick Buzza
 //
-// Created by Adam Bechtold and Patrick Buzza on 2/6/17.
-//
+// cpp file for the Deck class
+// Implements the functions declared in the Deck header file including:
+//   - a Constructor
+//   - shuffle
+//   - overloaded << operator
 
 #include "d_node.h"
 #include "deck.h"
@@ -23,9 +28,10 @@ Deck::Deck()
 }
 
 void Deck::shuffle()
-//shuffle that shit Fisher-Yates style
+//shuffle shuffle the deck using a Fisher-Yates algorithm. For more info
+//  on the Fisher-Yates process: http://bit.ly/2lBETDk
 {
-    //initializes the number of card swaps
+    //initializes the size of the deck to be shuffled
     int size = this->size;
     int sCount = 0;
 
@@ -33,17 +39,18 @@ void Deck::shuffle()
     node<Card> *rollingFront = this->front;
     node<Card> *targetNode = this->front;
 
-    randomNumber randGen = randomNumber(11);
+    //create random number generator - d_random.h currently requires positive
+    //   seed
+    randomNumber randGen = randomNumber(10);
 
+    //move through the deck swapping a selected element with another deeper
+    // in the list
     while(size > 1) {
-
-        //move to the target node
-        //ensure that the preTarget pointer is staying one spot behind target
+        // select a depth for the target
         long i = randGen.random(size); //select depth of target node
 
         //if depth is zero, element at this node stays the same
         if(i == 0) {
-           // cout << "just advance" << endl;
             rollingFront = rollingFront->next;
             targetNode = rollingFront;
             size--;
@@ -53,17 +60,12 @@ void Deck::shuffle()
 
         // else move into array
         long depth = i;
-        while(i > 0) {
+        while(i > 0){
             targetNode = targetNode->next;
             i--;
         }
-        cout << "s: " << size << " d: " << depth;
-        cout << " : switching " << rollingFront->nodeValue << " w/ ";
-        cout << targetNode->nodeValue << endl;
 
-        cout << *this;
-
-        cout << endl;
+        // swap cards
         Card temp = targetNode->nodeValue;
         targetNode->nodeValue = rollingFront->nodeValue;
         rollingFront->nodeValue = temp;
@@ -74,10 +76,9 @@ void Deck::shuffle()
         size--;
         sCount++;
     }
-
-    cout << endl << "sCout: " << sCount << endl;
 }
 
+// operator overload for << to print the cards of the deck›
 ostream &operator<<(ostream &ostr, const Deck &d)
 {
     node<Card> *curr;

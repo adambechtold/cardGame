@@ -1,9 +1,15 @@
+// Project 2a
+// Adam Bechtold & Patrick Buzza
 //
-// Created by Adam Bechtold and Patrick Buzza on 2/5/17.
-//
+// cpp file for the Card class
+// Implements the functions declared in the Card header file including:
+//   - a Constructor
+//   - setValue
+//   - setSuit
+//   - getValue
+//   - getSuit
 
 #include "Card.h"
-#include <iostream>
 
 Card::Card(int value, string suit)
 // constructor for a card
