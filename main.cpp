@@ -27,7 +27,7 @@ int main() {
 
     //prints out the shuffled deck
     cout << "Shuffled deck:" << endl << d;
-    cout << "complete";
+    cout << "\ncomplete\n";
 
     return 0;
 }
