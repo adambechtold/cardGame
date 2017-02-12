@@ -17,7 +17,6 @@ using namespace std;
 
 int main() {
 
-
     //Initializes our 52 card deck and number of shuffles desired
     Deck d = Deck();
     int numshuffles = 3;
@@ -31,7 +30,7 @@ int main() {
 
     //prints out the shuffled deck
     cout << "Shuffled deck:" << endl << d;
-    cout << "complete";
+    cout << "\ncomplete\n";
 
     return 0;
 }
