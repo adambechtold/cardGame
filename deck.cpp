@@ -11,9 +11,6 @@ Deck::Deck()
 //constructor for a deck of cards
 {
     this->size = 52;
-    //this->suits;
-    string suitsOne[] = {"Clubs", "Diamonds", "Hearts", "Spades"};
-
     this->front = NULL;
 
     for(int i = 3; i >= 0; i--) {

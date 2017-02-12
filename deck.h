@@ -17,7 +17,6 @@ public:
     Deck();
 
 private:
-    //node<Card> *p1;
     node<Card> *front;
     string suits[4] = {"Clubs", "Diamonds", "Hearts", "Spades"};
     int size;
