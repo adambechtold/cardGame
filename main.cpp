@@ -13,7 +13,6 @@ using namespace std;
 
 int main() {
 
-
     //Initializes our 52 card deck and number of shuffles desired
     Deck d = Deck();
     int numshuffles = 3;
