@@ -11,14 +11,14 @@ Deck::Deck()
 //constructor for a deck of cards
 {
     this->size = 52;
-    this->suits;
+    //this->suits;
     string suitsOne[] = {"Clubs", "Diamonds", "Hearts", "Spades"};
 
     this->front = NULL;
 
     for(int i = 3; i >= 0; i--) {
         for(int j = 12; j >= 0; j--) {
-            this->front = new node<Card> (Card(j+1, suitsOne[i]), this->front);
+            this->front = new node<Card> (Card(j+1, this->suits[i]), this->front);
         }
     }
 }
