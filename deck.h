@@ -1,5 +1,5 @@
 //
-// Created by Patrick on 2/6/17.
+// Created by Adam Bechtold and Patrick Buzza on 2/6/17.
 //
 
 #ifndef DECK_H
@@ -12,15 +12,14 @@ using namespace std;
 class Deck
 {
 public:
-    friend ostream& operator<< (ostream& ostr, const Deck& d);
-    void shuffle();
+    void shuffle(); //shuffles entire deck
     Deck();
 
 private:
-    node<Card> *front;
+    node<Card> *front; //pointer to the front of the deck
     string suits[4] = {"Clubs", "Diamonds", "Hearts", "Spades"};
     int size;
-
+    friend ostream& operator<< (ostream& ostr, const Deck& d);
 };
 
 #endif //PROJECT2_DECK_H

@@ -1,5 +1,5 @@
 //
-// Created by Adam Bechtold on 2/5/17.
+// Created by Adam Bechtold and Patrick Buzza on 2/5/17.
 //
 
 #include "Card.h"
@@ -41,6 +41,7 @@ ostream& operator<< (ostream& ostr, const Card& c)
 {
     int i = c.value;
 
+    //converts number in card to normal card naming conventions
     switch (i) {
         case 1: //ace
             ostr << "Ace of " << c.getSuit();

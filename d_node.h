@@ -1,7 +1,3 @@
-//
-// Created by Patrick on 2/6/17.
-//
-
 #ifndef NODE_CLASS
 #define NODE_CLASS
 
