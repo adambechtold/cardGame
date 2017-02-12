@@ -4,6 +4,7 @@
 
 #include "d_node.h"
 #include "deck.h"
+#include "d_random.h"
 
 
 Deck::Deck()
@@ -16,7 +17,7 @@ Deck::Deck()
     this->front = NULL;
 
     for(int i = 3; i >= 0; i--) {
-        for(int j = 13; j >= 0; j--) {
+        for(int j = 12; j >= 0; j--) {
             this->front = new node<Card> (Card(j+1, suitsOne[i]), this->front);
         }
     }
@@ -31,11 +32,13 @@ void Deck::shuffle()
     node<Card> *rollingFront = this->front;
     node<Card> *targetNode = this->front;
 
+    randomNumber randGen = randomNumber(11);
+
     while(size > 1) {
 
         //move to the target node
         //ensure that the preTarget pointer is staying one spot behind target
-        int i = rand() % size; //select depth of target node
+        long i = randGen.random(size); //select depth of target node
 
         //if depth is zero, element at this node stays the same
         if(i == 0) {
@@ -48,7 +51,7 @@ void Deck::shuffle()
         }
 
         // else move into array
-        int depth = i;
+        long depth = i;
         while(i > 0){
             targetNode = targetNode->next;
             i--;
@@ -57,6 +60,10 @@ void Deck::shuffle()
         cout << "s: " << size << " d: " << depth;
         cout << " : switching " << rollingFront->nodeValue << " w/ ";
         cout << targetNode->nodeValue << endl;
+
+        cout << *this;
+
+        cout << endl;
 
         Card temp = targetNode->nodeValue;
         targetNode->nodeValue = rollingFront->nodeValue;

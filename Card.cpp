@@ -39,6 +39,23 @@ string Card::getSuit() const
 ostream& operator<< (ostream& ostr, const Card& c)
 // overload << operator to print fields of the card
 {
-    ostr << " " << c.getValue() << " of " << c.getSuit();
-    return ostr;
-} //test hi Pat
+    int i = c.value;
+
+    switch (i) {
+        case 1: //ace
+            ostr << "Ace of " << c.getSuit();
+            return ostr;
+        case 11:
+            ostr << "Jack of " << c.getSuit();
+            return ostr;
+        case 12:
+            ostr << "Jack of " << c.getSuit();
+            return ostr;
+        case 13:
+            ostr << "Jack of " << c.getSuit();
+            return ostr;
+        default:
+            ostr << c.getValue() << " of " << c.getSuit();
+            return ostr;
+    }
+}
