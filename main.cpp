@@ -14,20 +14,19 @@ using namespace std;
 int main() {
 
 
-    //Initializes our 52 card deck and number of shuffles
+    //Initializes our 52 card deck and number of shuffles desired
     Deck d = Deck();
-    int numshuffles = 13;
+    int numshuffles = 3;
 
     //Prints out the deck in order
     cout << d;
-
-    cout << "----shuffle time------" << endl;
 
     //shuffles the deck a predefined number of times
     for (int i = 0; i < numshuffles; i++)
         d.shuffle();
 
-    cout << endl << d; //prints out the shuffled deck
+    //prints out the shuffled deck
+    cout << "Shuffled deck:" << endl << d;
     cout << "complete";
 
     return 0;

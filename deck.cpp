@@ -25,7 +25,7 @@ Deck::Deck()
 void Deck::shuffle()
 //shuffle that shit Fisher-Yates style
 {
-    //initializes the size of the deck to be shuffled
+    //initializes the number of card swaps
     int size = this->size;
     int sCount = 0;
 
@@ -53,11 +53,10 @@ void Deck::shuffle()
 
         // else move into array
         long depth = i;
-        while(i > 0){
+        while(i > 0) {
             targetNode = targetNode->next;
             i--;
         }
-
         cout << "s: " << size << " d: " << depth;
         cout << " : switching " << rollingFront->nodeValue << " w/ ";
         cout << targetNode->nodeValue << endl;
@@ -65,7 +64,6 @@ void Deck::shuffle()
         cout << *this;
 
         cout << endl;
-
         Card temp = targetNode->nodeValue;
         targetNode->nodeValue = rollingFront->nodeValue;
         rollingFront->nodeValue = temp;
@@ -89,4 +87,5 @@ ostream &operator<<(ostream &ostr, const Deck &d)
         cout << curr->nodeValue << endl;
         curr = curr->next;
     }
+    return ostr;
 }
