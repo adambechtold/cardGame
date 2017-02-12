@@ -3,13 +3,14 @@
 //
 // Header file for the Card class
 // Contains the private fields that hold the playing card's value and suit.
-// Also includes declarations of the methods necessary to use the Cards in a
+// Also includes declarations of the methods necessary to use a Deck in a
 // card game including:
 //   - a Constructor
 //   - setValue
 //   - setSuit
 //   - getValue
 //   - getSuit
+//   - overloaded << operator
 
 
 #include <iostream>
