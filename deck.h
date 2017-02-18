@@ -22,13 +22,16 @@ class Deck
 {
 public:
     Deck();
+    ~Deck();
     void shuffle(); //shuffles entire deck
     friend ostream& operator<< (ostream& ostr, const Deck& d);
-
+    Card deal();
+    Card operator= (const Card &deckcard);
 private:
     node<Card> *front; //pointer to the front of the deck
     string suits[4] = {"Clubs", "Diamonds", "Hearts", "Spades"};
     int size;
+
 };
 
 #endif //PROJECT2_DECK_H

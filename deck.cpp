@@ -26,6 +26,17 @@ Deck::Deck()
         }
     }
 }
+Deck::~Deck()
+//destructor for a deck of cards
+{
+    while(this->front != NULL)
+    {
+        node <Card> *ptr = this->front;
+        this->front = this->front->next;
+        delete(ptr);
+        this->size--;
+    }
+}
 
 void Deck::shuffle()
 //shuffle shuffle the deck using a Fisher-Yates algorithm. For more info
@@ -78,8 +89,19 @@ void Deck::shuffle()
     }
 }
 
-// operator overload for << to print the cards of the deck›
+Card Deck::deal()
+// deal returns the top card of the deck, and removes it from the deck
+{
+    node <Card> *p = this->front;
+    Card value = this->front->nodeValue;
+    this->front = this->front->next;
+    delete (p);
+    this->size--;
+    return value;
+}
+
 ostream &operator<<(ostream &ostr, const Deck &d)
+// operator overload for << to print the cards of the deck›
 {
     node<Card> *curr;
     curr = d.front;
@@ -89,4 +111,12 @@ ostream &operator<<(ostream &ostr, const Deck &d)
         curr = curr->next;
     }
     return ostr;
+}
+
+Card Deck::operator= (const Card &deckcard)
+// operator overload for << to print the cards of the deck›
+{
+    int Cardval = deckcard.getValue();
+    string Cardsuit = deckcard.getSuit();
+    return Card(Cardval,Cardsuit);
 }

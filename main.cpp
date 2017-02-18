@@ -31,6 +31,6 @@ int main() {
     //prints out the shuffled deck
     cout << "Shuffled deck:" << endl << d;
     cout << "\ncomplete\n";
-
+    cout << d.deal();
     return 0;
 }
