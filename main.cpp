@@ -1,11 +1,9 @@
-//
-// Created by Adam Bechtold and Patrick Buzza on 2/6/17.
+// Project 2a
+// Adam Bechtold & Patrick Buzza
 //
 //  Main file for Project Two: Flip
 //  This file initializes the deck
 //  It also prints out the deck, both in order and after being shuffled n times
-//
-
 
 #include <iostream>
 
