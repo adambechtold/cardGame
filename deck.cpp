@@ -100,6 +100,7 @@ Card Deck::deal()
     return value;
 }
 
+
 ostream &operator<<(ostream &ostr, const Deck &d)
 // operator overload for << to print the cards of the deck›
 {
@@ -111,12 +112,4 @@ ostream &operator<<(ostream &ostr, const Deck &d)
         curr = curr->next;
     }
     return ostr;
-}
-
-Card Deck::operator= (const Card &deckcard)
-// operator overload for << to print the cards of the deck›
-{
-    int Cardval = deckcard.getValue();
-    string Cardsuit = deckcard.getSuit();
-    return Card(Cardval,Cardsuit);
 }

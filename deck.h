@@ -25,8 +25,7 @@ public:
     ~Deck();
     void shuffle(); //shuffles entire deck
     friend ostream& operator<< (ostream& ostr, const Deck& d);
-    Card deal();
-    Card operator= (const Card &deckcard);
+    Card deal(); //returns a single card, and deletes it from deck
 private:
     node<Card> *front; //pointer to the front of the deck
     string suits[4] = {"Clubs", "Diamonds", "Hearts", "Spades"};
