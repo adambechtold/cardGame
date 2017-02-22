@@ -44,6 +44,9 @@ void playFlip()
     cout << "You are now ready to play! Time to draw the first card. \n";
 
     //TODO We still need to debug this.  My idea hear was to draw 24 cards at once, and put them in a new list.  As we read them out to the player, we then call the replace function, putting them back in the deck. However, I now realizing that instantiating an empty class array with 24 items might not be the best way to go about this.  A dynamic link list would probably hand this better, but I didn't really want to dive into that at the moment (It's very possible by the time you look at this, I'll have tackled this, but I want to leave this comment here until we talk about this, because I think this is an important aspect we should discuss).
+
+
+
     /*
     //builds a 24 card hand for the player to play from
     for (i; i<24; i++)

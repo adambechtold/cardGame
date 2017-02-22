@@ -100,7 +100,6 @@ Card Deck::deal()
     return value;
 }
 
-
 ostream &operator<<(ostream &ostr, const Deck &d)
 // operator overload for << to print the cards of the deck›
 {
@@ -112,4 +111,19 @@ ostream &operator<<(ostream &ostr, const Deck &d)
         curr = curr->next;
     }
     return ostr;
+}
+
+void Deck::replace(Card c)
+//place the given card at the bottom of this deck
+{
+    node <Card> *curr = this->front;
+
+    while(curr->next != NULL) {
+        curr = curr->next;
+    }
+
+    node<Card> last = node<Card>(c);
+    curr->next = &last;
+
+    this->size++;
 }
