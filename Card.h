@@ -36,10 +36,9 @@ public:
 
     string getSuit()const; //returns the suit of a card
 
-    Card operator= (const Card &deckcard);
-    //assignement overload to be used in copy constructor for new card objects
+    //Card operator= (const Card &deckcard);
+    //assignment overload to be used in copy constructor for new card objects
 
-    //TODO I built this function as a way to automatically update the game score, even though she didn't explicitly ask us to do that.  I want to hear your thoughts on it.
     void count(int &score);
 
 private:

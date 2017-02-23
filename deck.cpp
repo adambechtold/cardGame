@@ -4,7 +4,12 @@
 // cpp file for the Deck class
 // Implements the functions declared in the Deck header file including:
 //   - a Constructor
+//   - an overloaded Constructor
+//   - a Destructor
+//   - deal
+//   - replace
 //   - shuffle
+//   - depth
 //   - overloaded << operator
 
 #include "d_node.h"
@@ -26,15 +31,26 @@ Deck::Deck()
         }
     }
 }
+
+Deck::Deck(int size)
+//overloaded constructor for a deck of cards, used to store hand of card
+{
+    //initializes length of deck and front of deck pointer
+    this->size = size;
+    this->front = NULL;
+}
+
 Deck::~Deck()
 //destructor for a deck of cards
 {
+    node <Card> *ptr; //initializes pointer
+    //loops until every card in the deck is removed
     while(this->front != NULL)
     {
-        node <Card> *ptr = this->front;
-        this->front = this->front->next;
-        delete(ptr);
-        this->size--;
+        ptr = this->front; //assigns pointer to point to the front of the deck
+        this->front = this->front->next; //increments the front of the deck
+        delete(ptr);                     //deletes previous front value
+        this->size--;                    //decrements the size
     }
 }
 
@@ -70,7 +86,6 @@ void Deck::shuffle()
         }
 
         // else move into array
-        long depth = i;
         while(i > 0){
             targetNode = targetNode->next;
             i--;
@@ -92,38 +107,60 @@ void Deck::shuffle()
 Card Deck::deal()
 // deal returns the top card of the deck, and removes it from the deck
 {
-    node <Card> *p = this->front;
+    node <Card> *ptr = this->front;
     Card value = this->front->nodeValue;
     this->front = this->front->next;
-    delete (p);
+    delete (ptr);
     this->size--;
     return value;
+}
+
+void Deck::replace(Card c)
+//place the given card at the bottom of this deck
+{
+    //creates a pointer to the front of the deck
+    node <Card> *curr = this->front;
+    if (curr == NULL)
+    {
+        node <Card> last = node<Card>(c);
+        this->front = &last;
+    }
+    else
+    {
+        //loops until curr points to the last object in the linked list
+        while (curr->next != NULL) {
+            curr = curr->next;
+        }
+        //points to value passed to the function, then inserts value at end of list
+        node<Card> last = node<Card>(c);
+        curr->next = &last;
+        //increments the size variable of the deck
+        this->size++;
+    }
+}
+
+Card Deck::depth(int depth)
+//moves through the deck class and returns the object at requested depth
+{
+    node<Card> *ptr = this->front; //pointer to the front of the deck
+
+    //loops until the pointer reaches the desired index
+    for (int j = 0; j < depth; j++)
+    {
+        ptr = ptr->next;
+    }
+    return ptr->nodeValue; //returns the value at desired depth
 }
 
 ostream &operator<<(ostream &ostr, const Deck &d)
 // operator overload for << to print the cards of the deck›
 {
-    node<Card> *curr;
-    curr = d.front;
+    node<Card> *curr = d.front; //creates a pointer to the front of the deck
+    //while loop moves through the entire linked list to print out deck
     while (curr != NULL)
     {
         cout << curr->nodeValue << endl;
         curr = curr->next;
     }
     return ostr;
-}
-
-void Deck::replace(Card c)
-//place the given card at the bottom of this deck
-{
-    node <Card> *curr = this->front;
-
-    while(curr->next != NULL) {
-        curr = curr->next;
-    }
-
-    node<Card> last = node<Card>(c);
-    curr->next = &last;
-
-    this->size++;
 }

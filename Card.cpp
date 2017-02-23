@@ -18,9 +18,11 @@ Card::Card(int value, string suit)
     this->suit = suit;
 }
 
+
 Card::Card(const Card& rhs)
 //copy constructor for a new card based on existing card
 {
+
     *this = rhs;
 }
 
@@ -49,9 +51,13 @@ string Card::getSuit() const
 }
 
 void Card::count(int &score)
+//takes in current score value, and determines what the new score is
 {
+    //determines value and suit of current card
     int cardvalue = this->getValue();
     string cardsuit = this->getSuit();
+
+    //determines points to add or subtract from score based on card value
     if (cardvalue == 1)
         score = score + 10;
     else if (cardvalue > 10 && cardvalue < 14)
@@ -60,10 +66,11 @@ void Card::count(int &score)
         score = score/2;
     else if (cardvalue > 1 && cardvalue < 7)
         score = 0;
-    if (cardsuit == 'Heart')
+
+    //adds a point if the suit was a heart
+    if (cardsuit == "Hearts")
         score++;
 }
-
 
 ostream& operator<< (ostream& ostr, const Card& c)
 // overload << operator to print fields of the card
@@ -90,10 +97,12 @@ ostream& operator<< (ostream& ostr, const Card& c)
     }
 }
 
+/*
 Card Card::operator= (const Card &deckcard)
 // overload assignment operator for
 {
-    this->setValue(deckcard.getValue());
-    this->setSuit(deckcard.getSuit());
+    suit = deckcard.suit;
+    value = deckcard.value;
     return *this;
 }
+ */

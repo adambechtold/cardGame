@@ -22,10 +22,12 @@ class Deck
 {
 public:
     Deck();
+    Deck(int size);
     ~Deck();
     void shuffle(); //shuffles entire deck
     friend ostream& operator<< (ostream& ostr, const Deck& d);
     Card deal(); //returns a single card, and deletes it from deck
+    Card depth(int depth);
     void replace(Card c); //place this card at the bottom of the deck
 private:
     node<Card> *front; //pointer to the front of the deck
