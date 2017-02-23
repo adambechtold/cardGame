@@ -21,29 +21,27 @@ void playFlip()
     Deck hand = Deck(24);
     bool chosen[24] = {false};
     bool stop = false;
-    int counter, score, cardindex = 0;
+    int counter, score, cardindex, cind = 0;
     int numshuffles = 3;
     string name;
     char decision = 'N';
 
-    cout << d << endl;
-
-    cout << "---" << endl;
-
+    cout << "Original deck:\n" << d << endl;
+    cout << "-------" << endl;
 
     //shuffles the deck a predefined number of times
     for (int i=0; i < numshuffles; i++)
         d.shuffle();
 
-    cout << d << endl;
-
-    cout << "------" << endl;
+    cout << "Shuffled deck:\n" << d << endl;
+    cout << "-------" << endl;
 
     //interface statements; introducing the game and rules
     cout << "Hello there! Welcome to Flip, where honor can be won and lost on";
     cout << " a flip of a card. To get started, please tell us your name: \n";
     cin >> name;
-    cout << "Alright, " << name << ", there are a few rules for this game.\n";
+    cout << "Oh great, " << name << ".... There are rules you'll have to ";
+    cout << "follow to play this game.  They are as follows \n";
     cout << "1) The deck shall be shuffled three times" << endl;
     cout << "2) The top 24 cards shall be drawn from the deck." << endl;
     cout << "3) You will choose a card to flip, one by one, and are ";
@@ -63,13 +61,14 @@ void playFlip()
         hand.replace(d.deal());
     }
 
-    cout << hand;
+    cout << "Your hand (to make your life easier):\n" << hand;
 
     do
     {
         //prompt user to choose their card
-        cout << "Please choose your card index: ";
-        cin >> cardindex;
+        cout << "Please choose which card you'd like to draw (1-24): ";
+        cin >> cind;
+        cardindex = cind-1;
 
         //bonus section: determine if card has already been selected
         while (chosen[cardindex])
@@ -92,7 +91,7 @@ void playFlip()
     while (!stop && counter<24);
     cout << "Wasn't that fun? Lets see how well you did! \n";
     cout << "Score: " << score;
-    cout << "\n.\n..\n...\n....\n.....\n...Not bad.";
+    cout << "\n...\n...\n...\n....\n.....\nNot bad.";
 }
 
 int main()

@@ -73,7 +73,7 @@ void Card::count(int &score)
 }
 
 ostream& operator<< (ostream& ostr, const Card& c)
-// overload << operator to print fields of the card
+//overload << operator to print fields of the card
 {
     int i = c.value;
 
@@ -99,8 +99,9 @@ ostream& operator<< (ostream& ostr, const Card& c)
 
 
 Card& Card::operator= (const Card &deckcard)
-// overload assignment operator for
+//overload assignment operator
 {
+    //reads suit and value of existing, and uses them to initializes a new card
     suit = deckcard.suit;
     value = deckcard.value;
     return *this;

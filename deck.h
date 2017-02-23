@@ -21,14 +21,23 @@ using namespace std;
 class Deck
 {
 public:
-    Deck();
-    Deck(int size);
-    ~Deck();
+    Deck(); //constructor of deck class
+
+    Deck(int size); //copy constructor of deck class
+
+    ~Deck(); //destructor for deck class
+
     void shuffle(); //shuffles entire deck
+
     friend ostream& operator<< (ostream& ostr, const Deck& d);
+    //function to print out the values of the deck
+
     Card deal(); //returns a single card, and deletes it from deck
-    Card depth(int depth);
+
+    Card depth(int depth); //returns value at the requested depth of deck
+
     void replace(Card c); //place this card at the bottom of the deck
+
 private:
     node<Card> *front; //pointer to the front of the deck
     string suits[4] = {"Clubs", "Diamonds", "Hearts", "Spades"};

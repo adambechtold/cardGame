@@ -44,6 +44,7 @@ Deck::~Deck()
 //destructor for a deck of cards
 {
     node <Card> *ptr; //initializes pointer
+
     //loops until every card in the deck is removed
     while(this->front != NULL)
     {
@@ -107,11 +108,13 @@ void Deck::shuffle()
 Card Deck::deal()
 // deal returns the top card of the deck, and removes it from the deck
 {
+    //makes pointer to the front of deck and saves value of front card
     node <Card> *ptr = this->front;
     Card value = this->front->nodeValue;
+    //points the front of deck to the second element, and deletes first element
     this->front = this->front->next;
     delete (ptr);
-    this->size--;
+    this->size--; //decrements pointer
     return value;
 }
 
@@ -124,7 +127,6 @@ void Deck::replace(Card c)
     if (this->front == NULL)
     {
         this->front = last;
-        //this->front->nodeValue = c;
         this->size++;
     }
     else
@@ -134,9 +136,8 @@ void Deck::replace(Card c)
         {
             curr = curr->next;
         }
-        //points to value passed to the function, then inserts value at end of list
+        //points end of list to passed object
         curr->next = last;
-        //curr->next->nodeValue = c;
         //increments the size variable of the deck
         this->size++;
     }
@@ -159,6 +160,7 @@ ostream &operator<<(ostream &ostr, const Deck &d)
 // operator overload for << to print the cards of the deck›
 {
     node<Card> *curr = d.front; //creates a pointer to the front of the deck
+
     //while loop moves through the entire linked list to print out deck
     while (curr != NULL)
     {
