@@ -20,15 +20,25 @@ void playFlip()
     Deck d = Deck();
     Deck hand = Deck(24);
     bool chosen[24] = {false};
-    bool stop = {false};
-    int counter, score, card = 0;
+    bool stop = false;
+    int counter, score, cardindex = 0;
     int numshuffles = 3;
     string name;
     char decision = 'N';
 
+    cout << d << endl;
+
+    cout << "---" << endl;
+
+
     //shuffles the deck a predefined number of times
     for (int i=0; i < numshuffles; i++)
         d.shuffle();
+
+    cout << d << endl;
+
+    cout << "------" << endl;
+
     //interface statements; introducing the game and rules
     cout << "Hello there! Welcome to Flip, where honor can be won and lost on";
     cout << " a flip of a card. To get started, please tell us your name: \n";
@@ -52,28 +62,30 @@ void playFlip()
     {
         hand.replace(d.deal());
     }
+
+    cout << hand;
+
     do
     {
         //prompt user to choose their card
-        cout << "Please choose your card: \n";
-        cin >> card;
+        cout << "Please choose your card index: ";
+        cin >> cardindex;
 
         //bonus section: determine if card has already been selected
-        while (chosen[card])
+        while (chosen[cardindex])
         {
             cout << "You've already chosen this card,";
             cout << " please pick a different card.\n";
-            cin >> card;
+            cin >> cardindex;
         }
-        chosen[card]={true};
-        Card Chosencard = hand.depth(card);
-        cout << "You drew the " << Chosencard.getValue();
-        cout << " of " << Chosencard.getSuit();
+        chosen[cardindex]={true};
+        Card Chosencard = hand.depth(cardindex);
+        cout << "You drew the " << Chosencard << endl;
         Chosencard.count(score);
-        cout << "Your score is now" << score;
-        cout << "\nWould you like to draw another card? (Y/N) \n";
+        cout << "Your score is now: " << score;
+        cout << "\nWould you like to draw another card? (Y/N): ";
         cin >> decision;
-        if (decision == 'Y')
+        if (decision == 'N')
             stop = 1;
         counter++;
     }

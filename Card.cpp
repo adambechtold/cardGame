@@ -86,10 +86,10 @@ ostream& operator<< (ostream& ostr, const Card& c)
             ostr << "Jack of " << c.getSuit();
             return ostr;
         case 12:
-            ostr << "Jack of " << c.getSuit();
+            ostr << "Queen of " << c.getSuit();
             return ostr;
         case 13:
-            ostr << "Jack of " << c.getSuit();
+            ostr << "King of " << c.getSuit();
             return ostr;
         default:
             ostr << c.getValue() << " of " << c.getSuit();

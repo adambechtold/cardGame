@@ -125,6 +125,7 @@ void Deck::replace(Card c)
     {
         this->front = last;
         //this->front->nodeValue = c;
+        this->size++;
     }
     else
     {
@@ -132,10 +133,8 @@ void Deck::replace(Card c)
         while (curr->next != NULL)
         {
             curr = curr->next;
-            this->size++;
         }
         //points to value passed to the function, then inserts value at end of list
-        cout << curr->next;
         curr->next = last;
         //curr->next->nodeValue = c;
         //increments the size variable of the deck
