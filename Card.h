@@ -36,7 +36,7 @@ public:
 
     string getSuit()const; //returns the suit of a card
 
-    //Card operator= (const Card &deckcard);
+    Card& operator= (const Card &deckcard);
     //assignment overload to be used in copy constructor for new card objects
 
     void count(int &score);

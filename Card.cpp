@@ -97,12 +97,11 @@ ostream& operator<< (ostream& ostr, const Card& c)
     }
 }
 
-/*
-Card Card::operator= (const Card &deckcard)
+
+Card& Card::operator= (const Card &deckcard)
 // overload assignment operator for
 {
     suit = deckcard.suit;
     value = deckcard.value;
     return *this;
 }
- */

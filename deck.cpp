@@ -36,7 +36,7 @@ Deck::Deck(int size)
 //overloaded constructor for a deck of cards, used to store hand of card
 {
     //initializes length of deck and front of deck pointer
-    this->size = size;
+    this->size = 0;
     this->front = NULL;
 }
 
@@ -118,22 +118,26 @@ Card Deck::deal()
 void Deck::replace(Card c)
 //place the given card at the bottom of this deck
 {
+    node<Card> *curr = this->front;
+    node<Card> *last =  new node<Card>(c);
     //creates a pointer to the front of the deck
-    node <Card> *curr = this->front;
-    if (curr == NULL)
+    if (this->front == NULL)
     {
-        node <Card> last = node<Card>(c);
-        this->front = &last;
+        this->front = last;
+        //this->front->nodeValue = c;
     }
     else
     {
         //loops until curr points to the last object in the linked list
-        while (curr->next != NULL) {
+        while (curr->next != NULL)
+        {
             curr = curr->next;
+            this->size++;
         }
         //points to value passed to the function, then inserts value at end of list
-        node<Card> last = node<Card>(c);
-        curr->next = &last;
+        cout << curr->next;
+        curr->next = last;
+        //curr->next->nodeValue = c;
         //increments the size variable of the deck
         this->size++;
     }
