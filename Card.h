@@ -1,4 +1,4 @@
-// Project 2a
+// Project 2b
 // Adam Bechtold & Patrick Buzza
 //
 // Header file for the Card class
@@ -11,6 +11,7 @@
 //   - getValue
 //   - getSuit
 //   - overloaded << operator
+//   - count
 
 
 #include <iostream>

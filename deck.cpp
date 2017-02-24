@@ -1,4 +1,4 @@
-// Project 2a
+// Project 2b
 // Adam Bechtold & Patrick Buzza
 //
 // cpp file for the Deck class
@@ -18,7 +18,7 @@
 
 
 Deck::Deck()
-//constructor for a deck of cards
+//default constructor for a deck of cards, creates entire deck
 {
     //initializes length of deck and front of deck pointer
     this->size = 52;
@@ -33,7 +33,7 @@ Deck::Deck()
 }
 
 Deck::Deck(int size)
-//overloaded constructor for a deck of cards, used to store hand of card
+//overloaded constructor for a deck of cards, creates a null list
 {
     //initializes length of deck and front of deck pointer
     this->size = 0;
@@ -103,7 +103,7 @@ void Deck::shuffle()
         size--;
         sCount++;
     }
-}
+} //end of shuffle function
 
 Card Deck::deal()
 // deal returns the top card of the deck, and removes it from the deck
@@ -111,6 +111,7 @@ Card Deck::deal()
     //makes pointer to the front of deck and saves value of front card
     node <Card> *ptr = this->front;
     Card value = this->front->nodeValue;
+
     //points the front of deck to the second element, and deletes first element
     this->front = this->front->next;
     delete (ptr);
@@ -119,10 +120,11 @@ Card Deck::deal()
 }
 
 void Deck::replace(Card c)
-//place the given card at the bottom of this deck
+//places the input card object at the bottom of the deck
 {
     node<Card> *curr = this->front;
-    node<Card> *last =  new node<Card>(c);
+    node<Card> *last = new node<Card>(c);
+
     //creates a pointer to the front of the deck
     if (this->front == NULL)
     {
@@ -136,15 +138,17 @@ void Deck::replace(Card c)
         {
             curr = curr->next;
         }
+
         //points end of list to passed object
         curr->next = last;
+
         //increments the size variable of the deck
         this->size++;
     }
-}
+} //end of replace function
 
 Card Deck::depth(int depth)
-//moves through the deck class and returns the object at requested depth
+//traverses through the deck and returns the object at requested depth
 {
     node<Card> *ptr = this->front; //pointer to the front of the deck
 

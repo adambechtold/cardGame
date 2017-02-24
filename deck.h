@@ -1,4 +1,4 @@
-// Project 2a
+// Project 2b
 // Adam Bechtold & Patrick Buzza
 //
 // Header file for the Deck class
@@ -8,7 +8,12 @@
 // Also includes declarations of the methods necessary to use a Deck in a
 // card game including:
 //   - a Constructor
+//   - an overloaded Constructor
+//   - a Destructor
+//   - deal
+//   - replace
 //   - shuffle
+//   - depth
 //   - overloaded << operator
 
 #ifndef DECK_H

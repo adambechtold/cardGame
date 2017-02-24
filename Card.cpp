@@ -1,4 +1,4 @@
-// Project 2a
+// Project 2b
 // Adam Bechtold & Patrick Buzza
 //
 // cpp file for the Card class
@@ -8,16 +8,17 @@
 //   - setSuit
 //   - getValue
 //   - getSuit
+//   - overloaded << operator
+//   - count
 
 #include "Card.h"
 
 Card::Card(int value, string suit)
-// constructor for a card
+//default constructor for a card
 {
     this->value = value;
     this->suit = suit;
 }
-
 
 Card::Card(const Card& rhs)
 //copy constructor for a new card based on existing card
@@ -27,25 +28,25 @@ Card::Card(const Card& rhs)
 }
 
 void Card::setValue(int value)
-// set the value of a playing card
+//given a card value, sets the value of a playing card
 {
     this->value = value;
 }
 
 void Card::setSuit(string suit)
-// set the suit of the playing card
+//given a suit name, sets the suit of the playing card
 {
     this->suit = suit;
 }
 
 int Card::getValue() const
-// get the value of this playing card
+//get the value of this playing card
 {
     return this->value;
 }
 
 string Card::getSuit() const
-// return the suit of this playing card
+//return the suit of this playing card
 {
     return this->suit;
 }
@@ -74,6 +75,7 @@ void Card::count(int &score)
 
 ostream& operator<< (ostream& ostr, const Card& c)
 //overload << operator to print fields of the card
+//takes ites in a card ojbect and the << operator, returns << operator
 {
     int i = c.value;
 
