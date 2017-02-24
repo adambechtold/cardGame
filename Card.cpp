@@ -23,7 +23,6 @@ Card::Card(int value, string suit)
 Card::Card(const Card& rhs)
 //copy constructor for a new card based on existing card
 {
-
     *this = rhs;
 }
 

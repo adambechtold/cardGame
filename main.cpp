@@ -28,19 +28,18 @@ void playFlip()
     string name;
     char decision = 'N';
 
-    cout << "Original deck:\n" << d << endl;
-    cout << "-------" << endl;
+    cout << "Original deck:\n\n" << d << endl;
+    cout << "---------------" << endl;
 
     //shuffles the deck a predefined number of times
     for (int i = 0; i < numshuffles; i++)
         d.shuffle();
 
     cout << "Shuffled deck:\n" << d << endl;
-    cout << "-------" << endl;
 
     //interface statements; introducing the game and rules
     cout << "Hello there! Welcome to Flip, where honor can be won and lost on";
-    cout << " a flip of a card. To get started, please tell us your name: \n";
+    cout << " a flip of a card. To get started, please tell us your name: ";
     cin >> name;
     cout << "Oh great, " << name << " again .... There are rules you'll ";
     cout << "have to follow to play this game.  They are as follows \n";
@@ -64,21 +63,26 @@ void playFlip()
     }
 
     cout << "Your hand:\n" << drawn;
-    cout << "-------" << endl;
-    cout << "Remaining cards in the deck:\n" << d;
+    cout << "----------" << endl;
+    cout << "Remaining cards in the deck:\n" << d << endl;
 
     do
     {
         //prompt user to choose their card
-        cout << "Please choose which card you'd like to draw (1-24): ";
-        cin >> cind;
-        cardindex = cind - 1;
+        cardindex = -1;
+        while(cardindex <= 0 || 25 <= cardindex) {
+            cout << "Please choose which card you'd like to draw (1-24): ";
+            cin >> cind;
+            cardindex = cind;
+        }
+
+        cardindex--;
 
         //bonus section: determine if card has already been selected
         while (chosen[cardindex])
         {
             cout << "You've already chosen this card,";
-            cout << " please pick a different card.\n";
+            cout << " please pick a different card: ";
             cin >> cind;
             cardindex = cind - 1;
         }
@@ -104,7 +108,7 @@ void playFlip()
             cout << "Your score is now: " << score;
             cout << "\nWould you like to draw another card? (Y/N): ";
             cin >> decision;
-            if (decision == 'N')
+            if (decision == 'N' || decision == 'n')
                 stop = 1;
             counter++;
         }
